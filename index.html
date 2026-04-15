@@ -1,37 +1,1119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Remote IT Support | DevOps Engineer</title>
-    <style>
-        body { font-family: Arial; text-align: center; padding: 50px; }
-        h1 { color: #333; }
-        p { font-size: 18px; }
-        .btn {
-            background: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LayerSYSTEM — Technology Research & Product Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0a0c10;
+  --paper:  #f4f1eb;
+  --clay:   #e8e2d6;
+  --rust:   #c94f1e;
+  --rust2:  #e8622b;
+  --slate:  #2c3e50;
+  --fog:    #8a9bb0;
+  --white:  #ffffff;
+  --mono:   'JetBrains Mono', monospace;
+  --display:'Bebas Neue', sans-serif;
+  --body:   'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--clay); }
+::-webkit-scrollbar-thumb { background: var(--rust); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+  background: rgba(244,241,235,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  filter: invert(1);
+}
+.nav-logo-text {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+nav ul {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+nav ul a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav ul a:hover { color: var(--rust); }
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--rust);
+  color: var(--white) !important;
+  padding: 9px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--rust2) !important; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 64px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* diagonal line texture on left */
+.hero-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 24px,
+    rgba(255,255,255,0.025) 24px,
+    rgba(255,255,255,0.025) 25px
+  );
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--rust);
+}
+
+.hero-logo-img {
+  height: 56px;
+  width: auto;
+  margin-bottom: 24px;
+  position: relative;
+  /* logo is black, show on dark = use filter invert */
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: clamp(4rem, 6vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 28px;
+  position: relative;
+}
+h1 .accent { color: var(--rust); }
+
+.hero-tagline {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  margin-bottom: 44px;
+  font-style: italic;
+  position: relative;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  max-width: 420px;
+  line-height: 1.8;
+  position: relative;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--rust);
+  color: var(--white);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--rust2); transform: translateY(-2px); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--rust); color: var(--rust); }
+
+.hero-right {
+  background: var(--clay);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 64px 80px;
+  position: relative;
+}
+
+.hero-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-block {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 28px 22px;
+  border-left: 3px solid var(--rust);
+}
+.stat-block .num {
+  font-family: var(--display);
+  font-size: 2.8rem;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-block .num span { color: var(--rust); }
+.stat-block p { font-size: 0.8rem; color: var(--fog); font-family: var(--mono); }
+
+.certifications {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 24px;
+}
+.cert-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 14px;
+}
+.cert-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cert-badge {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 2px;
+}
+
+/* ── SECTION COMMONS ── */
+section { position: relative; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  gap: 40px;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--rust);
+}
+
+h2 {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 4vw, 4.2rem);
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+h2 .rust { color: var(--rust); }
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--fog);
+  max-width: 380px;
+  line-height: 1.75;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* ── SERVICES ── */
+#services {
+  padding: 120px 0;
+  background: var(--paper);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--clay);
+  border: 2px solid var(--clay);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--paper);
+  padding: 48px 44px;
+  position: relative;
+  transition: background 0.25s;
+  overflow: hidden;
+}
+.service-card:hover { background: var(--white); }
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 3px;
+  background: var(--rust);
+  transition: width 0.4s ease;
+}
+.service-card:hover::after { width: 100%; }
+
+.card-number {
+  font-family: var(--display);
+  font-size: 5rem;
+  color: var(--clay);
+  line-height: 1;
+  position: absolute;
+  top: 20px; right: 28px;
+  transition: color 0.25s;
+}
+.service-card:hover .card-number { color: rgba(201,79,30,0.12); }
+
+.card-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 16px;
+}
+
+.service-card h3 {
+  font-family: var(--display);
+  font-size: 1.9rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.service-best {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--fog);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.service-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.service-features li {
+  font-size: 0.88rem;
+  color: var(--slate);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+.service-features li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--rust);
+  font-size: 0.75rem;
+  top: 2px;
+}
+.service-features li strong { color: var(--ink); font-weight: 600; }
+
+.card-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.meta-pill {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--clay);
+  color: var(--fog);
+}
+.meta-pill.hot { border-color: var(--rust); color: var(--rust); }
+
+/* ── PROCESS ── */
+#process {
+  padding: 120px 0;
+  background: var(--ink);
+}
+
+#process h2 { color: var(--white); }
+#process h2 .rust { color: var(--rust); }
+#process .section-label { color: var(--rust); }
+#process .section-desc { color: rgba(255,255,255,0.4); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 0;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 48px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 10%, rgba(255,255,255,0.15) 90%, transparent);
+}
+
+.step {
+  padding: 40px 32px;
+  position: relative;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.step:last-child { border-right: none; }
+
+.step-num {
+  font-family: var(--display);
+  font-size: 5rem;
+  color: var(--rust);
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.step h4 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+
+/* ── WHY ── */
+#why {
+  padding: 120px 0;
+  background: var(--paper);
+}
+
+.why-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.why-left {}
+.why-left .section-label { margin-bottom: 10px; }
+.why-left h2 { margin-bottom: 28px; }
+.why-left p {
+  font-size: 0.95rem;
+  color: var(--fog);
+  line-height: 1.8;
+  max-width: 420px;
+}
+
+.industry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+.industry-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
+  border-radius: 2px;
+  background: var(--clay);
+  color: var(--slate);
+  border: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+.industry-tag:hover { border-color: var(--rust); color: var(--rust); cursor: default; }
+
+.why-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reason-item {
+  background: var(--white);
+  border-radius: 3px;
+  padding: 28px 30px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: start;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.reason-item:hover { border-color: var(--rust); transform: translateX(4px); }
+
+.reason-icon {
+  width: 48px; height: 48px;
+  background: rgba(201,79,30,0.08);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.reason-content h4 {
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.reason-content p { font-size: 0.85rem; color: var(--fog); line-height: 1.6; }
+
+/* ── CTA ── */
+#cta {
+  padding: 0;
+  overflow: hidden;
+}
+
+.cta-inner {
+  background: var(--rust);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 60px;
+  padding: 80px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-inner::before {
+  content: 'LAYER';
+  position: absolute;
+  right: -20px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--display);
+  font-size: 18rem;
+  color: rgba(255,255,255,0.05);
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.cta-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 14px;
+}
+.cta-inner h2 {
+  color: var(--white);
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  margin-bottom: 0;
+}
+.cta-inner p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  margin-top: 12px;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btn-white {
+  display: inline-block;
+  background: var(--white);
+  color: var(--rust);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform 0.2s;
+  text-align: center;
+  white-space: nowrap;
+}
+.btn-white:hover { transform: translateY(-2px); }
+
+.btn-outline-white {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+  text-align: center;
+  white-space: nowrap;
+}
+.btn-outline-white:hover { border-color: var(--white); color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 64px 48px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-brand img {
+  height: 40px;
+  filter: invert(1);
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.footer-col h5 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul li a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+}
+.footer-bottom .footer-brand-name {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.08em;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  nav ul { display: none; }
+
+  #hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 100px 28px 60px; }
+  .hero-right { padding: 60px 28px; }
+
+  .container { padding: 0 24px; }
+  .section-header { flex-direction: column; gap: 16px; }
+  .section-desc { max-width: 100%; }
+
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .step { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  .why-layout { grid-template-columns: 1fr; gap: 48px; }
+  .cta-inner { grid-template-columns: 1fr; padding: 60px 28px; }
+  .cta-inner::before { display: none; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  footer { padding: 48px 24px 28px; }
+}
+</style>
 </head>
 <body>
 
-<h1>DevOps & Remote IT Support Engineer</h1>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX8AAADICAIAAACPnnZJAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAACjklEQVR4nO3UMQEAIAzAMMC/5+GCHiQKenXPzAJ47tQBwKfcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wCNC/NIBI1KZV5yAAAAAElFTkSuQmCC" alt="Layer SYSTEM Logo">
+    <span class="nav-logo-text">LAYER SYSTEM</span>
+  </a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="https://wa.me/8801712909430" class="nav-cta">Get In Touch</a></li>
+  </ul>
+</nav>
 
-<p>I help startups manage servers, fix issues, and automate systems.</p>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Technology Research & Product Development</div>
+    <img class="hero-logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX8AAADICAIAAACPnnZJAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAACjklEQVR4nO3UMQEAIAzAMMC/5+GCHiQKenXPzAJ47tQBwKfcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wCNC/NIBI1KZV5yAAAAAElFTkSuQmCC" alt="Logo">
+    <h1>LAYER<br><span class="accent">SYSTEM</span></h1>
+    <p class="hero-tagline">"Making reality and developing innovative ideas."</p>
+    <p class="hero-desc">
+      Elite DevSecOps, infrastructure automation, and fractional CTO services — engineered for startups and enterprises that refuse to compromise on reliability.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#cta" class="btn-outline">Partner With Us</a>
+    </div>
+  </div>
 
-<p>Services:</p>
-<ul>
-<li>Server Setup & Troubleshooting</li>
-<li>Cloud (AWS) Support</li>
-<li>Automation & DevOps</li>
-<li>24/7 Remote IT Support</li>
-</ul>
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="stat-block">
+        <div class="num">99<span>.95%</span></div>
+        <p>Guaranteed system uptime via HA architecture</p>
+      </div>
+      <div class="stat-block">
+        <div class="num">70<span>%</span></div>
+        <p>Reduction in manual effort via IaC automation</p>
+      </div>
+      <div class="stat-block">
+        <div class="num">24<span>/7</span></div>
+        <p>Global remote support across all time zones</p>
+      </div>
+      <div class="stat-block">
+        <div class="num">60<span>%</span></div>
+        <p>Fewer vulnerabilities caught early in CI/CD</p>
+      </div>
+    </div>
 
-<br>
+    <div class="certifications">
+      <div class="cert-label">Certified Expertise</div>
+      <div class="cert-badges">
+        <span class="cert-badge">Cisco</span>
+        <span class="cert-badge">Red Hat</span>
+        <span class="cert-badge">Microsoft</span>
+        <span class="cert-badge">CompTIA</span>
+        <span class="cert-badge">Anthropic AI/LLM</span>
+        <span class="cert-badge">ClickUp</span>
+        <span class="cert-badge">Miro</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<a class="btn" href="https://wa.me/880XXXXXXXXXX">Contact Me on WhatsApp</a>
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">Core Service Packages</div>
+        <h2>FOUR<br>PILLARS OF<br><span class="rust">EXCELLENCE</span></h2>
+      </div>
+      <p class="section-desc">
+        Professional-grade service packages structured for scaling startups, enterprises, and tech-driven organisations that demand operational precision.
+      </p>
+    </div>
 
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="service-card reveal">
+        <div class="card-number">01</div>
+        <div class="card-tag">DevSecOps Transformation</div>
+        <h3>THE "DEVSECOPS ELITE"</h3>
+        <p class="service-best">Best for: Scaling startups & tech-driven enterprises</p>
+        <ul class="service-features">
+          <li><strong>Infrastructure as Code (IaC):</strong> Full automation using <strong>Ansible</strong> — 100% reproducibility, 70% less manual effort.</li>
+          <li><strong>Secure CI/CD Pipelines:</strong> Integrated <strong>SAST/DAST</strong> & secrets scanning catching 60% of vulnerabilities early.</li>
+          <li><strong>Container Orchestration:</strong> Expert management with <strong>Red Hat OpenShift</strong>, Kubernetes & Podman.</li>
+          <li><strong>High Availability (HA):</strong> Systems architected for <strong>99.95%+ uptime</strong> using HAProxy & load balancing.</li>
+        </ul>
+        <div class="card-meta">
+          <span class="meta-pill hot">High Demand</span>
+          <span class="meta-pill">Ansible</span>
+          <span class="meta-pill">Kubernetes</span>
+          <span class="meta-pill">OpenShift</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card reveal">
+        <div class="card-number">02</div>
+        <div class="card-tag">Security & Compliance</div>
+        <h3>THE "SHIELD & COMPLIANCE" AUDIT</h3>
+        <p class="service-best">Best for: Fintech, Telecom & data-sensitive organisations</p>
+        <ul class="service-features">
+          <li><strong>Security Architecture:</strong> Design under strict <strong>SOC 2</strong> and <strong>PCI-DSS</strong> compliance frameworks.</li>
+          <li><strong>Disaster Recovery:</strong> Automated backup systems reducing data loss windows to under <strong>4 hours</strong>.</li>
+          <li><strong>Access Control:</strong> Robust <strong>IAM</strong> & role-based access controls for cloud/container environments.</li>
+          <li><strong>Observability Stack:</strong> Centralised logging & incident detection via <strong>Prometheus, Grafana, EFK/Loki</strong>.</li>
+        </ul>
+        <div class="card-meta">
+          <span class="meta-pill hot">Compliance</span>
+          <span class="meta-pill">SOC 2</span>
+          <span class="meta-pill">PCI-DSS</span>
+          <span class="meta-pill">Grafana</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card reveal">
+        <div class="card-number">03</div>
+        <div class="card-tag">Managed IT Services</div>
+        <h3>GLOBAL 24/7 REMOTE IT SUPPORT</h3>
+        <p class="service-best">Best for: Small to Medium Enterprises needing round-the-clock reliability</p>
+        <ul class="service-features">
+          <li><strong>Managed Infrastructure Services:</strong> 24/7 remote monitoring maintaining <strong>99.9% uptime</strong> for production & staging.</li>
+          <li><strong>Specialised Support:</strong> ERP, Telecom, Company IT Infrastructure, Wireless Networks & Microservices.</li>
+          <li><strong>Multi-Cloud Management:</strong> Expert administration across <strong>AWS, GCP, Azure</strong> & DigitalOcean.</li>
+          <li><strong>Enterprise OS & Network:</strong> Linux (Red Hat, Ubuntu), Windows Server & secure <strong>VPN/VPC</strong> setup.</li>
+        </ul>
+        <div class="card-meta">
+          <span class="meta-pill hot">Monthly Retainer</span>
+          <span class="meta-pill">AWS</span>
+          <span class="meta-pill">GCP</span>
+          <span class="meta-pill">Azure</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card reveal">
+        <div class="card-number">04</div>
+        <div class="card-tag">Strategic Leadership</div>
+        <h3>FRACTIONAL CTO & ADVISORY</h3>
+        <p class="service-best">Best for: Organisations requiring high-level technical leadership</p>
+        <ul class="service-features">
+          <li><strong>Infrastructure Migration:</strong> Leading the shift from monolithic systems to <strong>microservices</strong> architecture.</li>
+          <li><strong>Tooling & Workflow:</strong> Streamlining operations via <strong>ClickUp, Miro</strong> & AI/LLM integrations.</li>
+          <li><strong>Technical Mentorship:</strong> Training internal teams to promote digital literacy & modern stack adoption.</li>
+          <li><strong>Lifecycle Management:</strong> End-to-end ownership of scaling & performance for <strong>10+ concurrent environments</strong>.</li>
+        </ul>
+        <div class="card-meta">
+          <span class="meta-pill hot">Leadership</span>
+          <span class="meta-pill">AI/LLM</span>
+          <span class="meta-pill">Microservices</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">How We Work</div>
+        <h2>THE<br>AUTOMATION<br><span class="rust">LIFECYCLE</span></h2>
+      </div>
+      <p class="section-desc">
+        A structured, phased approach ensuring every infrastructure project meets both technical excellence and real business objectives.
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>DISCOVERY</h4>
+        <p>In-depth planning, requirement gathering, and business analysis to map the full scope of your technical landscape.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h4>DESIGN</h4>
+        <p>Technical specification development and project planning — every architecture decision documented before a single line is deployed.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h4>EXECUTION</h4>
+        <p>Business and production automation strategy deployed with precision — CI/CD, containers, IaC, and monitoring all configured end-to-end.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h4>OVERSIGHT</h4>
+        <p>Ongoing project monitoring, status reporting, and system quality assurance — we stay accountable long after go-live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="why-layout">
+      <div class="why-left reveal">
+        <div class="section-label">Why Partner With Layer SYSTEM</div>
+        <h2>BUILT ON<br>PROVEN<br><span class="rust">TRACK RECORD</span></h2>
+        <p>
+          From US-based fintech to global manufacturing, we bring certified technical leadership and industry depth that generic IT providers simply cannot match.
+        </p>
+
+        <div class="industry-tags">
+          <span class="industry-tag">Energy</span>
+          <span class="industry-tag">Banking</span>
+          <span class="industry-tag">Managed Infrastructure</span>
+          <span class="industry-tag">E-commerce</span>
+          <span class="industry-tag">Garments & Textile</span>
+          <span class="industry-tag">Manufacturing</span>
+          <span class="industry-tag">Telecom</span>
+          <span class="industry-tag">Fintech</span>
+        </div>
+      </div>
+
+      <div class="why-right">
+        <div class="reason-item reveal">
+          <div class="reason-icon">🌐</div>
+          <div class="reason-content">
+            <h4>Global Track Record</h4>
+            <p>Extensive experience supporting US-based fintech and international clients across multiple time zones — reliability without borders.</p>
+          </div>
+        </div>
+        <div class="reason-item reveal">
+          <div class="reason-icon">🏭</div>
+          <div class="reason-content">
+            <h4>Deep Industry Reach</h4>
+            <p>Specialist knowledge across Energy, Manufacturing, Banking, Healthcare, and E-commerce gives us context that general DevOps firms lack.</p>
+          </div>
+        </div>
+        <div class="reason-item reveal">
+          <div class="reason-icon">🎓</div>
+          <div class="reason-content">
+            <h4>Certified Leadership</h4>
+            <p>Backed by Cisco (CCNA/CCNP), Microsoft (MCSE), and CompTIA credentials — not self-proclaimed expertise, but verified mastery.</p>
+          </div>
+        </div>
+        <div class="reason-item reveal">
+          <div class="reason-icon">📋</div>
+          <div class="reason-content">
+            <h4>Documentation Excellence</h4>
+            <p>Comprehensive consulting and documentation for every IT project — so your team is never left in the dark after engagement ends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-label">Ready to Transform Your Infrastructure?</div>
+      <h2>LET'S BUILD<br>SOMETHING RELIABLE.</h2>
+      <p>Start with a no-commitment strategy call. We'll assess your current setup and propose the right service package for your stage.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:roman@layersystem.com" class="btn-white">Book a Strategy Call →</a>
+      <a href="#services" class="btn-outline-white">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX8AAADICAIAAACPnnZJAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAACjklEQVR4nO3UMQEAIAzAMMC/5+GCHiQKenXPzAJ47tQBwKfcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wAN9wEa7gM03AdouA/QcB+g4T5Aw32AhvsADfcBGu4DNNwHaLgP0HAfoOE+QMN9gIb7AA33ARruAzTcB2i4D9BwH6DhPkDDfYCG+wCNC/NIBI1KZV5yAAAAAElFTkSuQmCC" alt="Layer SYSTEM">
+      <p>Technology Research & Product Development. Making reality and developing innovative ideas — one system at a time.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">DevSecOps Elite</a></li>
+        <li><a href="#services">Shield & Compliance</a></li>
+        <li><a href="#services">24/7 Remote IT Support</a></li>
+        <li><a href="#services">Fractional CTO</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Industries</h5>
+      <ul>
+        <li><a href="#">Fintech & Banking</a></li>
+        <li><a href="#">E-commerce</a></li>
+        <li><a href="#">Telecom</a></li>
+        <li><a href="#">Healthcare</a></li>
+        <li><a href="#">Manufacturing</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Layer SYSTEM. All rights reserved.</p>
+    <div class="footer-brand-name">LAYER SYSTEM</div>
+    <p>Technology Research & Product Development</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 40) {
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.12)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
 </body>
 </html>
